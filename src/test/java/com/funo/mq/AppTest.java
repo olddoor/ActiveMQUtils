@@ -1,4 +1,4 @@
-package com.funo.zyl.ActiveMqUtil;
+package com.funo.mq;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
