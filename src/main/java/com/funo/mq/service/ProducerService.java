@@ -1,10 +1,23 @@
 package com.funo.mq.service;
 
+import java.util.List;
+
 import javax.jms.Destination;
 
 import org.springframework.stereotype.Service;
 
-
+/**
+ * 暂时只提供发送String类型的数据.
+ * jms api支持更多的数据类型可在后续版本中拓展: 
+ *  |---- BytesMessage </br>
+    |---- MapMessage </br>
+    |---- ObjectMessage </br>
+    |---- StreamMessage </br>
+    |---- TextMessage </br>
+    {eusername: 11, pwwdd}
+ *
+ * @author olddoor
+ */
 public interface ProducerService {
 
 	  /**
@@ -36,5 +49,14 @@ public interface ProducerService {
 	   * @param response 回复消息的队列
 	   */
 	  public void sendMessage(Destination destination, String msg, Destination response);
-
+	  
+	  /**
+	   * 向指定的destination发送消息
+	   */
+	  public void sendMessage(String destinationName, final String msg);
+	  
+	  /**
+	   * 向指定的多个destination发送消息
+	   */
+	  public void sendMessage(List<String> destinationName, final String msg,String strategy);
 }

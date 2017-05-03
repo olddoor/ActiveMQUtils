@@ -8,5 +8,10 @@ public interface ConsumerService {
 	 * 消费消息
 	 * @param queueDestination
 	 */
-	 public void receive(Destination queueDestination);
+	 public String receive(Destination queueDestination);
+	 /**
+	  * 直接通过destinationName的名字进行消费
+	  * @param queueDestination
+	  */
+	 public String receive(String queueDestination);
 }

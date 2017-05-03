@@ -16,6 +16,7 @@
 		<spring.version>3.2.5.RELEASE</spring.version>
 		<junit.version>4.12</junit.version>
 		<activeMQ.version>5.7.0</activeMQ.version>
+		<commons-lang3.version>3.1</commons-lang3.version>
 	</properties>
 
 	<dependencies>
@@ -44,6 +45,12 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jms</artifactId>
 			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons-lang3.version}</version>
 		</dependency>
 	</dependencies>
 

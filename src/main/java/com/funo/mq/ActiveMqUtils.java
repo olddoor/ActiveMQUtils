@@ -1,8 +1,5 @@
 package com.funo.mq;
 
-import javax.annotation.PostConstruct;
-import javax.jms.Destination;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,98 +7,46 @@ import org.springframework.stereotype.Component;
 
 import com.funo.mq.service.ConsumerService;
 import com.funo.mq.service.ProducerService;
+import com.funo.mq.util.SpringContextHolder;
+
 /**
  * activeMQ工具类
- * @author zhanyl
+ * @author olddoor
  */
 @Component
 public class ActiveMqUtils  {
+	
+	/**
+	原先规划对多消费者监听同一队列的情况下,增加算法起到消费者负载均衡的效果.
+	现实中考虑到多消费者监听同一个队列事实上在消费者一簇也起了负载均衡的效果. 本部分规划停止.
+	public static String strategy_Round_Robin="Round_Robin";
+	public static String strategy_Random="Random";
+	public static String strategy_Hash="Hash";
+	public static String strategy_Weight_Round_Robin="Weight_Round_Robin";
+	public static String strategy_Weight_Random="Weight_Random";
+	 */
+	
 	private static Logger logger = LoggerFactory.getLogger(ActiveMqUtils.class); 
 	
-	@Autowired  
-	private ConsumerService consumerService;
-	@Autowired 
-	private ProducerService producerService;
+	private static ConsumerService consumerService = ((ConsumerService)SpringContextHolder.getBean("consumerServiceImpl"));
 	
-	public static ProducerService producer; 
-	
-	public static ConsumerService consumer;
-	
-//	static{
-//		logger.debug("ActiveMqUtils 初始化init");
-//		System.out.println("init----------");
-//	}
-	@PostConstruct
-	public void init() {
-		logger.debug("[ActiveMqUtils] Spring.PostConstruct初始化init----------");
-		System.out.println("[ActiveMqUtils] Spring.PostConstruct初始化init----------");
-		producer=producerService;
-		consumer=consumerService;
+	private static ProducerService producerService = ((ProducerService)SpringContextHolder.getBean("producerServiceImpl"));
+
+	public static ConsumerService getConsumerService() {
+		return consumerService;
 	}
-	  
-	/**
-	 * 发送queue队列消息
-	 * @param destination 目标queue-name
-	 * @param msg 消息
-	 */
-	public static void setQueue(Destination destination, String msg){
-//		logger.debug("[ActiveMqUtils] 开始发送Queue");
-		System.out.println("[ActiveMqUtils] 开始发送Queue");
-		producer.sendMessage(destination, msg);
+
+	public static void setConsumerService(ConsumerService consumerService) {
+		ActiveMqUtils.consumerService = consumerService;
 	}
-	
-	/**
-	 * 接收queue队列消息[仅供测试, 建议使用额外的监听器类接收消息]
-	 * @param destination 目标queue-name
-	 * @param msg 消息
-	 */
-	public static void getQueue(Destination destination){
-		consumer.receive(destination);
-	}
-	
-	
-	public ProducerService getProducerService() {
+
+	public static ProducerService getProducerService() {
 		return producerService;
 	}
 
-
-	public void setProducerService(ProducerService producerService) {
-		this.producerService = producerService;
+	public static void setProducerService(ProducerService producerService) {
+		ActiveMqUtils.producerService = producerService;
 	}
-
-
-	public ConsumerService getConsumerService() {
-		return consumerService;
-	}
-	public void setConsumerService(ConsumerService consumerService) {
-		this.consumerService = consumerService;
-	}
-
-//	/**
-//	 * 向指定的topic发布消息
-//	 * @param topic
-//	 * @param msg
-//	 */
-//	public void sendTopic(final Destination topic, final String msg){
-//		topicJmsTemplate.send(topic, new MessageCreator() {
-//			public Message createMessage(Session session) throws JMSException {
-//				System.out.println("topic name 是" + topic.toString()
-//						+ "，发布消息内容为:\t" + msg);
-//				return session.createTextMessage(msg);
-//			}
-//		});
-//	}
-
 	
-	//getter/setter
-//	public JmsTemplate getTopicJmsTemplate() {
-//		return topicJmsTemplate;
-//	}
-//
-//	public void setTopicJmsTemplate(JmsTemplate topicJmsTemplate) {
-//		this.topicJmsTemplate = topicJmsTemplate;
-//	}
-	public String toString(){
-		return "11111";
-	}
+	
 }

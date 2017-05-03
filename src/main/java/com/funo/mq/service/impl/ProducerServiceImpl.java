@@ -1,5 +1,7 @@
 package com.funo.mq.service.impl;
 
+import java.util.List;
+
 import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.Message;
@@ -18,13 +20,21 @@ public class ProducerServiceImpl implements ProducerService {
 	@Autowired
 	@Qualifier("queueJmsTemplate")
 	private JmsTemplate queueJmsTemplate;
-
+	
+	public void sendMessage(String destinationName, final String msg){
+		System.out.println("2323");
+		queueJmsTemplate.send(destinationName, new MessageCreator() {
+			public Message createMessage(Session session) throws JMSException {
+				return session.createTextMessage(msg);
+			}
+		});
+	}
+	
 	/**
 	 * 向指定队列发送消息
 	 */
 	@Override
 	public void sendMessage(Destination destination, final String msg) {
-		System.out.println("ProducerService向队列" + destination.toString() + "发送了消息：\t" + msg);
 		queueJmsTemplate.send(destination, new MessageCreator() {
 			public Message createMessage(Session session) throws JMSException {
 				return session.createTextMessage(msg);
@@ -44,7 +54,6 @@ public class ProducerServiceImpl implements ProducerService {
 				return session.createTextMessage(msg);
 			}
 		});
-
 	}
 	
 	/**
@@ -64,5 +73,11 @@ public class ProducerServiceImpl implements ProducerService {
 
 	public void setJmsTemplate(JmsTemplate jmsTemplate) {
 		this.queueJmsTemplate = jmsTemplate;
+	}
+
+	@Override
+	public void sendMessage(List<String> destinationName, String msg, String strategy) {
+		
+		
 	}
 }
