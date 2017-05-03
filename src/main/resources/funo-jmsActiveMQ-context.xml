@@ -12,7 +12,7 @@
 	<description>Spring + activemq Configuration create by olddoor</description>
 	
     <!-- 加载配置属性文件 -->
-	<context:property-placeholder ignore-unresolvable="true" location="classpath*:/config.properties" />
+	<context:property-placeholder ignore-unresolvable="true" location="classpath*:conf/config.properties" />
 	
 	<context:annotation-config />
 	

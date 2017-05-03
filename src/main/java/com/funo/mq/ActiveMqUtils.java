@@ -2,12 +2,11 @@ package com.funo.mq;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.funo.mq.service.ConsumerService;
 import com.funo.mq.service.ProducerService;
-import com.funo.mq.util.SpringContextHolder;
+import com.funo.mq.util.SpringContextUtil;
 
 /**
  * activeMQ工具类
@@ -28,9 +27,9 @@ public class ActiveMqUtils  {
 	
 	private static Logger logger = LoggerFactory.getLogger(ActiveMqUtils.class); 
 	
-	private static ConsumerService consumerService = ((ConsumerService)SpringContextHolder.getBean("consumerServiceImpl"));
+	private static ConsumerService consumerService = ((ConsumerService)SpringContextUtil.getBean("consumerServiceImpl"));
 	
-	private static ProducerService producerService = ((ProducerService)SpringContextHolder.getBean("producerServiceImpl"));
+	private static ProducerService producerService = ((ProducerService)SpringContextUtil.getBean("producerServiceImpl"));
 
 	public static ConsumerService getConsumerService() {
 		return consumerService;

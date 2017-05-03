@@ -12,7 +12,7 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
 import com.funo.mq.service.ConsumerService;
-@Service
+@Service("consumerServiceImpl")
 public class ConsumerServiceImpl implements ConsumerService {
 	private static Logger logger = LoggerFactory.getLogger(ConsumerServiceImpl.class); 
 	

@@ -2,9 +2,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.funo.zyl</groupId>
+	<groupId>com.funo.mq</groupId>
 	<artifactId>ActiveMqUtil</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.4</version>
 	<packaging>jar</packaging>
 
 	<name>ActiveMqUtil</name>
@@ -56,6 +56,29 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<appendAssemblyId>false</appendAssemblyId>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<!-- <archive>
+						<manifest>
+							<mainClass>com.birdben.App</mainClass>
+						</manifest>
+					</archive> -->
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>assembly</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 			<!-- Compiler 插件, 设定JDK版本 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -75,6 +98,7 @@
 				<version>2.3</version>
 				<configuration>
 					<warName>${project.artifactId}</warName>
+					<warSourceExcludes>src/test/*/**</warSourceExcludes>
 				</configuration>
 			</plugin>
 
@@ -106,10 +130,17 @@
 			</plugin>
 
 			<!-- resource插件 -->
+			<!-- 项目作为jar引入其他项目时候, jar中的spring无法加载配置文件的问题: jar中配置文件放在“/”(根目录)下时，通过classpath*加载配置文件，jar包中的配置文件不会加载， 
+				这是因为Spring使用classpath加载配置文件时需要借助JDK的ClassLoader.getResources(String name)方法， 
+				而该方法有一个局限：当传入的参数为空字符串时，即我们本意是想从根目录获取文件，这时JDK只会返回存在于文件系统中的资源， 而在jar包中的资源并不会被返回。解决方法是将配置文件放在根的下一级目录内， 
+				例如/conf/application-context.xml，web.xml中配置为classpath*:conf/**/*application-context.xml。 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>2.6</version>
+				<configuration>
+					<outputDirectory>${basedir}/target/classes/conf</outputDirectory>
+				</configuration>
 			</plugin>
 
 			<!-- install插件 -->

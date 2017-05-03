@@ -1,4 +1,6 @@
 # ActiveMQUtils
-this java project be bulid by Spring + acitviMQ <br />
-it provid send and received msg as queue way.  <br />
-user can use it as jar in their projects.  <br />
+this java project be build with Spring + acitviMQ <br/>
+it provide send and received msg as queue way. <br/>
+default setting is not transacted and auto-acknowledge, 
+user can use it as jar in their projects.<br/>
+go further u can update code for more capabilities <br/>

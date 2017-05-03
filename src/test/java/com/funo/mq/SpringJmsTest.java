@@ -5,6 +5,9 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.funo.mq.ActiveMqUtils;
+import com.funo.mq.util.SpringContextUtil;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath*:funo-jmsActiveMQ-*.xml")
@@ -14,9 +17,12 @@ public class SpringJmsTest {
 	 */
 	@Test
 	public void testProduce() {
-		for(int i=0;i<10;i++){
-			ActiveMqUtils.getProducerService().sendMessage("zyl", "cmcc"+i);
-		}
+//		SpringContextUtil m=new SpringContextUtil();
+//		m.say();
+//		
+//		for(int i=0;i<10;i++){
+//			ActiveMqUtils.getProducerService().sendMessage("zyl", "cmcc"+i);
+//		}
 		
 		/**
 		  // 打印读取的配置文件.测试
