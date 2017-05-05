@@ -3,10 +3,10 @@ package com.funo.mq;
 import com.funo.mq.util.SpringContextUtil;
 
 public class test {
-
+	private static boolean bb;
 	public static void main(String[] args) {
-		 SpringContextUtil m=new SpringContextUtil();
-		 m.say();
+//		 SpringContextUtil m=new SpringContextUtil();
+//		 m.say();
 
 		// 打印读取的配置文件.测试
 		//

@@ -23,9 +23,13 @@
 	</context:component-scan>
 
 	
-	<!-- 配置JMS连接工厂 -->
+	<!-- 配置JMS连接工厂OptimizeAcknowledge -->
 	<bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
 		<property name="brokerURL" value="${borkers_url}"/>
+		<!-- 自动应答策略下, 开启ack优化选项 -->
+		<property name="optimizeAcknowledge" value="${optimizeAcknowledge}" />
+		<!-- ack信息最大发送周期(毫秒) -->
+		<property name="optimizeAcknowledgeTimeOut" value="${optimizeAcknowledgeTimeOut}" />
 	</bean>
 	
 	<!-- ActiveMQ连接池配置,SpingJMS实现 -->
