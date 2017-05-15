@@ -14,45 +14,18 @@
 	</description>
 	
 	
+<!-- 	<bean id="waiqin_QueueMessageListener" class="com.funo.testmq.listener.waiqin_QueueMessageListener" />
+		
+	<bean id="queueDestination2" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg>
+			<value>"hn"</value>
+		</constructor-arg>
+	</bean>	
 	
-	<!-- =====================开始配置监听器  begin==================================================-->
-	<!-- 配置消息队列监听者（Queue），代码下面给出，只有一个onMessage方法 
-	<bean id="queueMessageListener" class="com.funo.mq.listener.QueueMessageListener" /> -->
-	
-	<!-- 注意: web端调用时,需注释监听器的配置
-		 动态监听操作中难以实现, 如有需求可考虑才采用同一个队列订阅,使用消息选择器的策略区分 note by olddoor -->
-	<!-- 消息监听容器（Queue），配置连接工厂，监听的队列是queueDestination，监听器是上面定义的监听器  -->
-	<!-- 1官方建议使用CachingConnectionFactory的情况下不要使用动态线程.无论是设置concurrency 
-		   还是设置concurrentConsumers配合maxConcurrentConsumers.最好由listener container自行管理
-		 2官方建议使用单独的本地的Connection.
-		 3同样官方建议最好使用事务.-->
-	<!--
-	<bean id="jmsContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+	<bean id="jmsContainer2" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
 		<property name="connectionFactory" ref="connectionFactory" />
-		<property name="destination" ref="queueDestination" />
-		<property name="messageListener" ref="queueAdapterMessageListener" />--> <!-- queueMessageListener -->
-		<!-- 静态设置固定的并发线程数 ,默认是1. 动态设置可考虑使用maxConcurrentConsumers.如使用topic队列的时候需要注意 出现消息被重复消费的情况  
- 		  <property name="concurrentConsumers" value="${jmsC1_Consumers}"></property> -->
-    	<!-- 设置最大的线程数 
-    	<property name="maxConcurrentConsumers" value="${jmsC1_max}"></property> -->
-    	
-    	<!-- 设置动态的线程数   
-    	<property name="concurrency" value="${jmsC1_concurrency}"></property>  
-	</bean>-->
-	<!-- =====================开始配置监听器  end======================================================-->
-
-	<!-- =====================消息监听适配器  begin===================================== -->
-		<!-- 将接收到的消息进行类型转换，然后通过反射的形式把它交给一个普通的Java类进行处理.如果交给消息监听器需要为它指定这样一个目标类 -->
-		<!-- 消息监听适配器
-		<bean id="queueAdapterMessageListener"
-			class="org.springframework.jms.listener.adapter.MessageListenerAdapter">
-			<constructor-arg>
-				<bean id="messageDelegateBean" class="com.funo.mq.listener.MessageDelegateBean" />
-			</constructor-arg>
-		</bean>  
-		 -->
-	<!-- =====================消息监听适配器  end =====================================  -->
-	
-	
+		<property name="destination" ref="queueDestination2" />
+		<property name="messageListener" ref="waiqin_QueueMessageListener" />-->  <!--queueMessageListener  queueAdapterMessageListener-->
+<!--	</bean> -->
 </beans>
 

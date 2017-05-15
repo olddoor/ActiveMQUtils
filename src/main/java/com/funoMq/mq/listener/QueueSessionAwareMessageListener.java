@@ -1,4 +1,4 @@
-package com.funo.mq.listener;
+package com.funoMq.mq.listener;
 
 import javax.jms.Destination;
 import javax.jms.JMSException;

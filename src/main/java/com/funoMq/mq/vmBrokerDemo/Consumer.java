@@ -1,4 +1,4 @@
-package com.funo.mq.vmBrokerDemo;
+package com.funoMq.mq.vmBrokerDemo;
 
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;

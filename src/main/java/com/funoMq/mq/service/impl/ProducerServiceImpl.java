@@ -1,5 +1,6 @@
-package com.funo.mq.service.impl;
+package com.funoMq.mq.service.impl;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.jms.Destination;
@@ -14,15 +15,14 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
 
-import com.funo.mq.service.ProducerService;
-@Service
+import com.funoMq.mq.service.ProducerService;
+//@Service
 public class ProducerServiceImpl implements ProducerService {
 	@Autowired
 	@Qualifier("queueJmsTemplate")
 	private JmsTemplate queueJmsTemplate;
 	
 	public void sendMessage(String destinationName, final String msg){
-		System.out.println("2323");
 		queueJmsTemplate.send(destinationName, new MessageCreator() {
 			public Message createMessage(Session session) throws JMSException {
 				return session.createTextMessage(msg);
@@ -79,5 +79,23 @@ public class ProducerServiceImpl implements ProducerService {
 	public void sendMessage(List<String> destinationName, String msg, String strategy) {
 		
 		
+	}
+
+	@Override
+	public void sendMessage(Destination destination, final Object o) {
+		queueJmsTemplate.send(destination, new MessageCreator() {
+			public Message createMessage(Session session) throws JMSException {
+				return session.createObjectMessage((Serializable) o);
+			}
+		});
+	}
+
+	@Override
+	public void sendMessage(String destinationName, final Object o) {
+		queueJmsTemplate.send(destinationName, new MessageCreator() {
+			public Message createMessage(Session session) throws JMSException {
+				return session.createObjectMessage((Serializable) o);
+			}
+		});
 	}
 }

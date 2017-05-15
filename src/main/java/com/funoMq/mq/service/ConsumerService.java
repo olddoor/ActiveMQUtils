@@ -1,4 +1,4 @@
-package com.funo.mq.service;
+package com.funoMq.mq.service;
 
 import javax.jms.Destination;
 

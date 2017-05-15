@@ -1,4 +1,4 @@
-package com.funo.mq.service;
+package com.funoMq.mq.service;
 
 import java.util.List;
 
@@ -33,6 +33,23 @@ public interface ProducerService {
 	   * @param msg String 消息内容
 	   */
 	  public void sendMessage(Destination destination, String msg);
+	  
+	  /**
+	   * 发消息，向指定的 destination
+	   * 
+	   * @param destination 目的地
+	   * @param msg String 消息内容
+	   */
+	  public void sendMessage(Destination destination, Object o);
+	  
+	  
+	  /**
+	   * 发消息，向指定的 destination
+	   * 
+	   * @param destination 目的地
+	   * @param msg String 消息内容
+	   */
+	  public void sendMessage(String destinationName, Object o);
 
 	  /**
 	   * 发消息，向指定的 destination

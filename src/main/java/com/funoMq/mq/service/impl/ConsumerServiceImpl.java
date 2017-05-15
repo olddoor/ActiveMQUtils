@@ -1,4 +1,4 @@
-package com.funo.mq.service.impl;
+package com.funoMq.mq.service.impl;
 
 import javax.jms.Destination;
 import javax.jms.JMSException;
@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
-import com.funo.mq.service.ConsumerService;
-@Service("consumerServiceImpl")
+import com.funoMq.mq.service.ConsumerService;
+//@Service("consumerServiceImpl")
 public class ConsumerServiceImpl implements ConsumerService {
 	private static Logger logger = LoggerFactory.getLogger(ConsumerServiceImpl.class); 
 	

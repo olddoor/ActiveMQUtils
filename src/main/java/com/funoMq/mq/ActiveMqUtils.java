@@ -1,18 +1,18 @@
-package com.funo.mq;
+package com.funoMq.mq;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import com.funo.mq.service.ConsumerService;
-import com.funo.mq.service.ProducerService;
-import com.funo.mq.util.SpringContextUtil;
+import com.funoMq.mq.service.ConsumerService;
+import com.funoMq.mq.service.ProducerService;
+import com.funoMq.mq.util.SpringContextUtil;
 
 /**
  * activeMQ工具类
  * @author olddoor
  */
-@Component
+//@Component
 public class ActiveMqUtils  {
 	
 	/**

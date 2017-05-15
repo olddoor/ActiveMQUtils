@@ -1,6 +1,7 @@
 package com.funo.mq;
 
-import com.funo.mq.util.SpringContextUtil;
+import com.funoMq.mq.ActiveMqUtils;
+import com.funoMq.mq.util.SpringContextUtil;
 
 public class test {
 	private static boolean bb;

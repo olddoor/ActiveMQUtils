@@ -4,7 +4,7 @@
 
 	<groupId>com.funo.mq</groupId>
 	<artifactId>ActiveMqUtil</artifactId>
-	<version>0.4</version>
+	<version>0.7</version>
 	<packaging>jar</packaging>
 
 	<name>ActiveMqUtil</name>
@@ -52,6 +52,14 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>${commons-lang3.version}</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/commons-configuration/commons-configuration
+		<dependency>
+		    <groupId>commons-configuration</groupId>
+		    <artifactId>commons-configuration</artifactId>
+		    <version>1.10</version>
+		</dependency>
+		 -->
 	</dependencies>
 
 	<build>

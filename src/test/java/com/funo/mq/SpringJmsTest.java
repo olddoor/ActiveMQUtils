@@ -1,12 +1,15 @@
 package com.funo.mq;
 
+import java.util.Date;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.funo.mq.ActiveMqUtils;
-import com.funo.mq.util.SpringContextUtil;
+import com.funoMq.mq.ActiveMqUtils;
+import com.funoMq.mq.bean.DemoBean;
+import com.funoMq.mq.util.SpringContextUtil;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -17,12 +20,17 @@ public class SpringJmsTest {
 	 */
 	@Test
 	public void testProduce() {
-//		SpringContextUtil m=new SpringContextUtil();
+		SpringContextUtil m=new SpringContextUtil();
 //		m.say();
-//		
-//		for(int i=0;i<10;i++){
-//			ActiveMqUtils.getProducerService().sendMessage("zyl", "cmcc"+i);
-//		}
+		
+		for(int i=0;i<10;i++){
+			DemoBean db=new DemoBean();
+			db.setAge(i);
+			db.setBrithday(new Date());
+			db.setName("name"+i);
+			db.setScore(i*20.1);
+			ActiveMqUtils.getProducerService().sendMessage("cmcc-queue", db);
+		}
 		
 		/**
 		  // 打印读取的配置文件.测试

@@ -1,4 +1,4 @@
-package com.funo.mq.listener;
+package com.funoMq.mq.listener;
 
 import java.io.Serializable;
 import java.util.Map;
