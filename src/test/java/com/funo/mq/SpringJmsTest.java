@@ -29,8 +29,10 @@ public class SpringJmsTest {
 			db.setBrithday(new Date());
 			db.setName("name"+i);
 			db.setScore(i*20.1);
-			ActiveMqUtils.getProducerService().sendMessage("cmcc-queue", db);
-		}
+			ActiveMqUtils.getProducerService().sendMessage("ppks", db);
+			ActiveMqUtils.getProducerService().sendMessage("nba", i);
+		} 
+		
 		
 		/**
 		  // 打印读取的配置文件.测试

@@ -8,9 +8,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class SpringContextUtil {
 	//使用jar/conf下的配置文件
-//	public static ApplicationContext context = new ClassPathXmlApplicationContext("classpath*:conf/funo-*.xml");
+	public static ApplicationContext context = new ClassPathXmlApplicationContext("classpath*:conf/funo-*.xml");
 	//使用外部配置文件的
-	public static ApplicationContext context = new ClassPathXmlApplicationContext("classpath*:funo-*.xml");//("classpath*:funo-*.xml");
+//	public static ApplicationContext context = new ClassPathXmlApplicationContext("classpath*:funo-*.xml");//("classpath*:funo-*.xml");
 
 	public static Object getBean(String serviceName) {
 		return context.getBean(serviceName);

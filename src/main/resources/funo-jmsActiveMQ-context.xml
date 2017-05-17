@@ -21,14 +21,15 @@
 	<!--<context:component-scan base-package="com.funoMq.mq">--><!-- base-package 如果多个，用“,”分隔 -->
 	<!--	<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>-->
-
+	
+    <!-- 如果采用注解方式引入,以jar包方式作为工具包提供给第三方使用时可能出现问题 -->
 	<bean id="consumerServiceImpl" class="com.funoMq.mq.service.impl.ConsumerServiceImpl"/>
 	<bean id="producerServiceImpl" class="com.funoMq.mq.service.impl.ProducerServiceImpl"/>
 	
 	<!-- 配置JMS连接工厂OptimizeAcknowledge -->
 	<bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
 		<property name="brokerURL" value="${borkers_url}"/>
-		<!-- 自动应答策略下, 开启ack优化选项 -->
+		<!-- 自动应答策略下, 开启ack优化选项 .默认开启-->
 		<property name="optimizeAcknowledge" value="${optimizeAcknowledge}" />
 		<!-- ack信息最大发送周期(毫秒) -->
 		<property name="optimizeAcknowledgeTimeOut" value="${optimizeAcknowledgeTimeOut}" />
@@ -36,12 +37,12 @@
 		<property name="useAsyncSend" value="true" />  
 	</bean>
 	
-	<!-- 加载策略 -->
+	<!-- 加载策略   一般采用默认,非事务的queue默认值为1000-->
 	<bean id="prefetchPolicy" class="org.apache.activemq.ActiveMQPrefetchPolicy">
-		<!-- 指定queue消费者的预取限制  [有待测试效果]-->
-		<property name="queuePrefetch" value="1" />
+		<property name="queuePrefetch" value="50" /><!-- 指定queue消费者的预取限制  [有待测试效果]-->
 	</bean>
 	
+	<!-- 设置最大重发次数 -->
     <bean id="redeliveryPolicy" class="org.apache.activemq.RedeliveryPolicy">
         <property name="maximumRedeliveries" value="2" />
     </bean>
