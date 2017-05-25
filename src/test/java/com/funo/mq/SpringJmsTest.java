@@ -31,6 +31,8 @@ public class SpringJmsTest {
 			db.setScore(i*20.1);
 			ActiveMqUtils.getProducerService().sendMessage("ppks", db);
 			ActiveMqUtils.getProducerService().sendMessage("nba", i);
+			
+			ActiveMqUtils.getConsumerService().receive("queue1");
 		} 
 		
 		

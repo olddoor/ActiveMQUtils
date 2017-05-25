@@ -105,8 +105,8 @@
 	 
 	 
 	<!-- =====================开始配置监听器  begin==================================================-->
-	<!-- 配置消息队列监听者（Queue），代码下面给出，只有一个onMessage方法  -->
-	<bean id="queueMessageListener" class="com.funoMq.mq.listener.QueueMessageListener" />
+	<!-- 配置消息队列监听者（Queue），代码下面给出，只有一个onMessage方法  
+	<bean id="queueMessageListener" class="com.funoMq.mq.listener.QueueMessageListener" />-->
 	
 	<!-- 注意: web端调用时,需注释监听器的配置
 		 动态监听操作中难以实现, 如有需求可考虑才采用同一个队列订阅,使用消息选择器的策略区分 note by olddoor -->
@@ -115,17 +115,18 @@
 		   还是设置concurrentConsumers配合maxConcurrentConsumers.最好由listener container自行管理
 		 2官方建议使用单独的本地的Connection.
 		 3同样官方建议最好使用事务.-->
-	<bean id="jmsContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+	<!--<bean id="jmsContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
 		<property name="connectionFactory" ref="connectionFactory" />
 		<property name="destination" ref="queueDestination" />
-		<property name="messageListener" ref="queueMessageListener" />  <!--queueMessageListener  queueAdapterMessageListener-->
+		<property name="messageListener" ref="queueMessageListener" />  -->
+		<!--queueMessageListener  queueAdapterMessageListener-->
 		<!-- 静态设置固定的并发线程数 ,默认是1. 动态设置可考虑使用maxConcurrentConsumers.如使用topic队列的时候需要注意 出现消息被重复消费的情况  
  		  <property name="concurrentConsumers" value="${jmsC1_Consumers}"></property> -->
     	<!-- 设置最大的线程数 
     	<property name="maxConcurrentConsumers" value="${jmsC1_max}"></property> -->
     	<!-- 设置动态的线程数   
     	<property name="concurrency" value="${jmsC1_concurrency}"></property>  -->
-	</bean>
+	<!--</bean> -->
 	<!-- =====================开始配置监听器  end======================================================-->
 
 	<!-- =====================消息监听适配器  begin===================================== -->
