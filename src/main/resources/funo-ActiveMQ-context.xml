@@ -29,6 +29,7 @@
 	<!-- 配置JMS连接工厂OptimizeAcknowledge -->
 	<bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
 		<property name="brokerURL" value="${borkers_url}"/>
+		<property name="trustAllPackages" value="true"/> <!-- 接收和消费的entity要包路径一致 -->
 		<!-- 自动应答策略下, 开启ack优化选项 .默认开启-->
 		<property name="optimizeAcknowledge" value="${optimizeAcknowledge}" />
 		<!-- ack信息最大发送周期(毫秒) -->

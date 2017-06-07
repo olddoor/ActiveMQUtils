@@ -1,4 +1,4 @@
-package com.funoMq.mq.bean;
+package com.funo.framework.extension.edy.entity;
 
 import java.io.Serializable;
 import java.util.Date;

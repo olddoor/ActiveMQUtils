@@ -10,7 +10,6 @@ import javax.jms.TextMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.funoMq.mq.bean.DemoBean;
 
 /**
  * queue消息监听,消费v1.0

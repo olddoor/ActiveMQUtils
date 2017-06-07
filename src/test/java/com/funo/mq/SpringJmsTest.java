@@ -2,18 +2,19 @@ package com.funo.mq;
 
 import java.util.Date;
 
+import org.apache.activemq.command.ActiveMQObjectMessage;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.funo.framework.extension.edy.entity.DemoBean;
 import com.funoMq.mq.ActiveMqUtils;
-import com.funoMq.mq.bean.DemoBean;
 import com.funoMq.mq.util.SpringContextUtil;
 
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath*:funo-jmsActiveMQ-*.xml")
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations = "classpath*:funo-ActiveMQ*.xml")
 public class SpringJmsTest {
 	/**
 	 * 测试生产者向queue1发送消息
@@ -23,16 +24,16 @@ public class SpringJmsTest {
 		SpringContextUtil m=new SpringContextUtil();
 //		m.say();
 		
-		for(int i=0;i<10;i++){
+		for(int i=0;i<5;i++){
 			DemoBean db=new DemoBean();
 			db.setAge(i);
 			db.setBrithday(new Date());
 			db.setName("name"+i);
 			db.setScore(i*20.1);
-			ActiveMqUtils.getProducerService().sendMessage("ppks", db);
-			ActiveMqUtils.getProducerService().sendMessage("nba", i);
-			
-			ActiveMqUtils.getConsumerService().receive("queue1");
+//			ActiveMqUtils.getProducerService().sendMessage("ppks", db);
+//			ActiveMqUtils.getProducerService().sendMessage("nba", i);
+			ActiveMqUtils.getProducerService().sendMessage("object-test",db);
+//			ActiveMqUtils.getConsumerService().receive("queue1");
 		} 
 		
 		

@@ -13,8 +13,8 @@
 				 以此模式不适合采取listener方式
 	</description>
 	
-	
-<!-- 	<bean id="waiqin_QueueMessageListener" class="com.funo.testmq.listener.waiqin_QueueMessageListener" />
+	<!-- 
+	<bean id="waiqin_QueueMessageListener" class="com.funo.testmq.listener.waiqin_QueueMessageListener" />
 		
 	<bean id="queueDestination2" class="org.apache.activemq.command.ActiveMQQueue">
 		<constructor-arg>
@@ -25,7 +25,7 @@
 	<bean id="jmsContainer2" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
 		<property name="connectionFactory" ref="connectionFactory" />
 		<property name="destination" ref="queueDestination2" />
-		<property name="messageListener" ref="waiqin_QueueMessageListener" />-->  <!--queueMessageListener  queueAdapterMessageListener-->
-<!--	</bean> -->
+		<property name="messageListener" ref="waiqin_QueueMessageListener" />  
+	</bean> --> 
 </beans>
 
