@@ -8,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.funo.framework.extension.edy.entity.DemoBean;
 import com.funoMq.mq.ActiveMqUtils;
 import com.funoMq.mq.util.SpringContextUtil;
 
@@ -25,14 +24,14 @@ public class SpringJmsTest {
 //		m.say();
 		
 		for(int i=0;i<5;i++){
-			DemoBean db=new DemoBean();
-			db.setAge(i);
-			db.setBrithday(new Date());
-			db.setName("name"+i);
-			db.setScore(i*20.1);
+//			DemoBean db=new DemoBean();
+//			db.setAge(i);
+//			db.setBrithday(new Date());
+//			db.setName("name"+i);
+//			db.setScore(i*20.1);
 //			ActiveMqUtils.getProducerService().sendMessage("ppks", db);
-//			ActiveMqUtils.getProducerService().sendMessage("nba", i);
-			ActiveMqUtils.getProducerService().sendMessage("object-test",db);
+			ActiveMqUtils.getProducerService().sendMessage("nba", i);
+//			ActiveMqUtils.getProducerService().sendMessage("object-test",db);
 //			ActiveMqUtils.getConsumerService().receive("queue1");
 		} 
 		

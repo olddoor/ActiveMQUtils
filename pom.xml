@@ -4,7 +4,7 @@
 
 	<groupId>com.funo.mq</groupId>
 	<artifactId>ActiveMqUtil</artifactId>
-	<version>1.0.3</version>
+	<version>1.2beta</version>
 	<packaging>jar</packaging>
 
 	<name>ActiveMqUtil</name>
@@ -12,7 +12,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jdk.version>1.6</jdk.version>
+		<jdk.version>1.7</jdk.version>
 		<spring.version>4.3.3.RELEASE</spring.version>
 		<junit.version>4.12</junit.version>
 		<activeMQ.version>5.7.0</activeMQ.version>
@@ -20,33 +20,23 @@
 	</properties>
 
 	<dependencies>
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<!--  
-		<dependency>
-			<groupId>org.apache.activemq</groupId>
-			<artifactId>activemq-core</artifactId>
-			<version>${activeMQ.version}</version>
-		</dependency>
-		-->
-		<dependency>  
-            <groupId>org.apache.activemq</groupId>  
-            <artifactId>activemq-all</artifactId>  
-            <version>5.12.2</version>  
-        </dependency>	
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-test</artifactId>
-		    <version>4.3.8.RELEASE</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -60,13 +50,37 @@
 			<version>${commons-lang3.version}</version>
 		</dependency>
 		
-		<!-- https://mvnrepository.com/artifact/commons-configuration/commons-configuration
+		<!-- <dependency> <groupId>org.apache.activemq</groupId> <artifactId>activemq-all</artifactId> 
+			<version>5.12.2</version> </dependency> -->
+		<!-- https://mvnrepository.com/artifact/org.apache.activemq/activemq-core -->
 		<dependency>
-		    <groupId>commons-configuration</groupId>
-		    <artifactId>commons-configuration</artifactId>
-		    <version>1.10</version>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-broker</artifactId>
+			<version>5.14.3</version>
 		</dependency>
-		 -->
+
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-client</artifactId>
+			<version>5.14.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.fusesource.hawtbuf</groupId>
+			<artifactId>hawtbuf</artifactId>
+			<version>1.11</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.geronimo.specs</groupId>
+			<artifactId>geronimo-jms_1.1_spec</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.geronimo.specs</groupId>
+			<artifactId>geronimo-j2ee-management_1.1_spec</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -78,11 +92,8 @@
 					<descriptorRefs>
 						<descriptorRef>jar-with-dependencies</descriptorRef>
 					</descriptorRefs>
-					<!-- <archive>
-						<manifest>
-							<mainClass>com.birdben.App</mainClass>
-						</manifest>
-					</archive> -->
+					<!-- <archive> <manifest> <mainClass>com.birdben.App</mainClass> </manifest> 
+						</archive> -->
 				</configuration>
 				<executions>
 					<execution>
